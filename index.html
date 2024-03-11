@@ -1,0 +1,245 @@
+<!-- TO RUN IN BROWSER:
+    1. Install vscode extension Name: open in `browser open-in-browser` by TechER
+    2. Right click html file and either run in default browser or another browser
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A/B Testing</title>
+    <!-- import CSS styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <!-- page content goes into <body> -->
+  <body>
+    <h1>A/B Testing</h1>
+    <div id="intro"> 
+        <h2>Introduction</h2>
+        <p>Welcome to my A/B testing analysis! For this assignment, I was tasked with modifying a given website. Then, based on collected user data, I compared the before (Interface A) with the after (Interface B) using statistical tests. Using these statistical tests, I then concluded whether there was a difference in user interactions from Interface A to Interface B and whether these indicated which interface was more effective.</p>
+    </div>
+
+    <div id="part1">
+      <h2>Part 1: Data Collection</h2>
+      <p>
+        In order to analyze user reponses to interface changes, I had to first change the interface! For my interface B, I changed the font color of
+        the "Schedule Appointment" and "See Appointment" buttons to black, added
+        dividers between the listed appointments, and sorted the appointments
+        with ascending dates.
+      </p>
+      <p>Interface A:</p>
+      <img
+        class="image"
+        src="./assets/interfaceA.png"
+        alt="A screenshot of interface version A."
+      />
+      <p>Interface B:</p>
+      <img
+        class="image"
+        src="./assets/interfaceB.png"
+        alt="A screenshot of interface version B."
+      />
+    </div>
+
+    <div id="part2">
+      <h2>Part 2: Analysis</h2>
+      <h3>Creating Hypotheses</h3>
+      <p>
+        In order to analyze the effectiveness of Interface B, I created a null
+        and alternative hypothesis for 3 different data types. The 3 data types
+        I chose to analyze were misclick rate, time on page, and time to first
+        click. Below the null hypothesis is a prediction of whether I think we
+        will reject or fail to reject the null hypothesis. Below the altnerative
+        hypothesis is a short reasoning of why I chose the alternative
+        hypothesis I did.
+      </p>
+      <ol>
+        <li>
+          <b>Misclick rate</b> — the frequency with which users click something
+          on the page before finding the correct button for the task
+        </li>
+        <ol type="I">
+          <li>
+            <b>Null hypothesis:</b> The misclick rate of Interface A and is the
+            same as the misclick rate of Interface B.
+          </li>
+          <ol type="a">
+            <li>I predict I will reject the null hypothesis.</li>
+          </ol>
+          <li>
+            <b>Alternative hypothesis:</b> The misclick rate of Interface B is
+            lower than the misclick rate of Interface A.
+          </li>
+          <ol type="a">
+            <li>
+              I believe that because of the increased contrast in font color of
+              the buttons, users will be able to differentiate the buttons more
+              easily, decreasing the misclick rate from Interface A to B.
+              Additionally, I added a calendar icon (emoji) to the "Schedule
+              Appointment" button, which should help users realize the
+              difference between "See Appointment" and "Schedule Appointment".
+            </li>
+          </ol>
+        </ol>
+        <li><b>Time on page</b> — the total time spent on webpage</li>
+        <ol type="I">
+          <li>
+            <b>Null hypothesis:</b> The time spent on Interface A is the same as
+            the time spent on Interface B.
+          </li>
+          <ol type="a">
+            <li>I predict I will reject the null hypothesis.</li>
+          </ol>
+          <li>
+            <b>Alternative hypothesis:</b> The time spent on Interface B is less
+            than the time spent on Interface A.
+          </li>
+          <ol type="a">
+            <li>
+              As a result of the dividers between appointments and sorted order
+              of the dates in Interface B, I believe users will more easily able
+              to identify which appointment they wish to schedule. Additionally,
+              the more readable font on the buttons will allow them to more
+              easily identify which button they need to press to schedule their
+              appointment. These two factors together would decrease the time
+              spent on Interface B compared to Interface A.
+            </li>
+          </ol>
+        </ol>
+        <li>
+          <b>Time to first click</b> — the time spent on the interface before clicking
+        </li>
+        <ol type="I">
+          <li>
+            <b>Null hypothesis:</b> The time to first click for Interface A will
+            be the same as the time to first click for Interface B.
+          </li>
+          <ol type="a">
+            <li>I predict I will reject the null hypothesis.</li>
+          </ol>
+          <li>
+            <b>Alternative hypothesis:</b> The time to first click for Interface
+            B will be less than the time to click for Interface A.
+          </li>
+          <ol type="a">
+            <li>
+              I believe that the changes made in Interface B make the process of
+              finding and scheduling an appointment more intuitive, therefore
+              decreasing the time a user spends digesting the website before deciding where to click. For instance, the font color on the "Schedule
+              Appointment" button is more readable, the appointments are more
+              distinct from each other, and the appointments are sorted by
+              dates. These factors lead to a more straightforward experience and
+              less mouse movement.
+            </li>
+          </ol>
+        </ol>
+      </ol>
+      <h3>Computing the Metrics</h3>
+      <p>
+        To compute the metrics, I used the following formulas and calculated
+        them using Google Sheets:
+      </p>
+      <ul>
+        <li>
+          Misclick rate = number of users that misclicked / number of total
+          users
+        </li>
+        <li>
+          Time on page = sum of time on page for all users / number of total
+          users
+        </li>
+        <li>
+          Time to first click = sum of time to first click for all users /
+          number of total users
+        </li>
+      </ul>
+      <p>This gave me these results:</p>
+      <table>
+        <tr>
+          <th></th>
+          <th>Interface A</th>
+          <th>Interface B</th>
+        </tr>
+        <tr>
+          <td>Misclick rate</td>
+          <td>0.5</td>
+          <td>0.0</td>
+        </tr>
+        <tr>
+          <td>Time on page (milliseconds)</td>
+          <td>36139.45833</td>
+          <td>9567.36</td>
+        </tr>
+        <tr>
+          <td>Time to first click (milliseconds)</td>
+          <td>14476.875</td>
+          <td>6512.84</td>
+        </tr>
+      </table>
+      <h3>Running Statistical Tests on the Data</h3>
+      <p><b>Misclick rate:</b> For this metric, I chose to do a chi-squared test. I chose this test because I wanted to compare the frequency of TRUE vs FALSE values, which are categorical. <br>
+      Results of chi-squared test: </p>
+      <ul>
+        <li>df = 1</li>
+        <li>chi^2 = 16.55405405</li>
+        <li>p-value = 0.00004728279371</li>
+      </ul>
+      <p>
+        Because p-value < 0.05, the difference in misclick rate between versions A and B is statistically significant. Based on the calculated p-value, there is about a 0.005% chance the groups are actually the same. Now that we are confident that our groups are not the same, we can look more closely at the difference in misclick. We see that the misclick rate decreased from 0.5 on Interface A to 0.0 on Interface B. Given that are difference is statistically significant, we observe that misclick rate did decrease from version A to B. <br>
+        <u>Conclusion:</u> We find statistically significant evidence that the alternative hypothesis is true. <br>
+      </p>
+
+      <p><b>Time on page:</b> For this metric, I chose to do a one-tailed t-test. This is because time is a continuous value, which implies the use of a t-test. Then, I chose a one-tailed t-test because I wanted to determine which interface had a shorter time on page. <br>
+      Results:</p>
+      <ul>
+        <li>df = 25.3924564</li>
+        <li>t-score: -8.709962508</li>
+        <li>p-value (B < A) = 0.000000002113435617</li>
+      </ul>
+      <p>
+        Because p-value < 0.05, the difference in the time on page per user between versions A and B is statistically significant. Additionally, we see that the t-score is negative, indicating a decrease in time on page from version A to B. This is confirmed by observing a decrease in average time on page in the metrics caluclated above. Therefore, we observe a decrease in time on page that is statistically significant. <br>
+        (Note: In the Google Sheet provided to calculate a one-tailed t-test, I input my data from Interface B into the column that said "Sample A" and vis versa for Interface A. I did this because I wanted to get p-value (B < A)).<br>
+        <u>Conclusion:</u> We find statistically significant evidence that the alternative hypothesis is true. 
+      </p>
+
+      <p><b>Time to first click:</b> For this metric, I chose to do a one-tailed t-test. This is becuase time is continous and I wanted to compare magnitudes of time, like in the previous metric. <br>
+      Results: </p>
+      <ul>
+        <li>df = 29.46414939</li>
+        <li>t-score: -4.340603896</li>
+        <li>p-value (B < A) = 0.00007665899694</li>
+      </ul>
+      <p>
+        Because p-value < 0.05, the difference in time to first click between versions A and B is statistically significant. We also observe that the t-score is negative, which indicates a decrease in time to first click from version A to B. Like in time on page, we can also confirm this difference in seeing the decrease in the average time to first click metric from A to B computed in the above section. Thus, we have observed a decrease in the time to first click that is statistically significant. <br>
+        <u>Conclusion:</u> We find statistically significant evidence that the alternative hypothesis is true.
+      </p>
+
+      <h3>Summary Statistics</h3>
+      <p>In addition to the statistical tests above, we can also examine some more strightforward statistics. Above, in the "Computing the Metrics" section, we already calculated the averages of time on page and time to first click above for Interface A and Interface B. For both of these metrics, we see that the average time decreased from Interface A to Interface B, which is consistent with the results of the statistical tests. Furthermore, we can calculate the median of time on page and time to first click:</p>
+      <table>
+        <th>
+            <td>Interface A</td>
+            <td>Interface B</td>
+        </th>
+        <tr>
+            <td>Time on page (milliseconds)</td>
+            <td>36748.5</td>
+            <td>8845</td>
+        </tr>
+        <tr>
+            <td>Time to first click (milliseconds)</td>
+            <td>12491.5</td>
+            <td>6025</td>
+        </tr>
+      </table>
+      <p>The median for both time on page and time to first click decreased from Interface A to Interface B. Based on these observations of mean and median, we can support our conclusions from the statistical tests that these metrics decreased from version A to B. Since did_misclick is not a continuous feature, it would not make much sense to calculate an mean or median. Instead, we can simply observe that misclick rate decreased from 0.5 to 0.0. <br>
+      I collected 24 data points on Interface A and 25 data points on Interface B. Since the amount of data points are very close, I feel comfortable comparing the two groups. However, in an ideal study, the amount of data points would be larger in order to ensure the study encompasses different user groups.</p>
+
+      <h3>Conclusion</h3>
+      <p>
+        As I predicted, I ended up accepting the alternative hypothesis for each of the metrics: misclick rate, time on page, and time to first click. A decreased misclick rate, time on page, and time to first click indicate that Interface B was easier to evaluate, its buttons were more easily identifiable, and the user was more quickly able to select the specified button. These signs lead me to believe that my Interface B was more effective than the original Interface A, and the changes I made improved the efficiency and flow of the webpage. Yay!
+      </p>
+    </div>
+  </body>
+</html>
